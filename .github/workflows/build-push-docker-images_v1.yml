@@ -14,8 +14,16 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+   
+    - name: Build the Authorization Docker image
+      run: docker build truiz_docker_exam/test_authorization/ --file Dockerfile --tag truiz-authorization-image:latest
+ 
+    - name: Build the Authentication Docker image
+      run: docker build truiz_docker_exam/test_authentication/ --file Dockerfile --tag truiz-authentication-image:latest
+
+ 
+    - name: Build the Content Docker image
+      run: docker build truiz_docker_exam/test_content/ --file Dockerfile --tag truiz-content-image:latest
       
     - name: Build and Push Authorization Docker Image
       uses: mr-smithers-excellent/docker-build-push@v4
