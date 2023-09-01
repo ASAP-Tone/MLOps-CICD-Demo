@@ -1,0 +1,45 @@
+version: '3.9'
+services:
+  fastapi:
+    image: datascientest/fastapi:1.0.0
+    container_name: fastapi_img
+    networks:
+      - my_exam_network
+    ports:
+      - target: 8000
+        published: 8000
+        protocol: tcp 
+        mode: host
+
+  authentication:
+    image: authentication_image:latest
+    container_name: authentication_image
+    depends_on:
+      - fastapi
+    network_mode: host 
+    volumes:
+      - log_vol:/home/log_folder
+
+  authorization:
+    image: authorization_image:latest
+    container_name: authorization_image
+    depends_on:
+      - fastapi
+    network_mode: host
+    volumes:
+      - log_vol:/home/log_folder
+
+  content:
+    image: content_image:latest
+    container_name: content_image
+    depends_on:
+      - fastapi
+    network_mode: host
+    volumes:
+      - log_vol:/home/log_folder
+
+networks:
+  my_exam_network:
+
+volumes:
+  log_vol:
