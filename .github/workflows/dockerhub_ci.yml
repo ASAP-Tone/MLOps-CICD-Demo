@@ -13,6 +13,7 @@ jobs:
     runs-on: ubuntu-20.04
 
     steps:
+  
     - uses: actions/checkout@v2
     - name : docker login 
       env :
@@ -20,7 +21,8 @@ jobs:
         DOCKER_PASSWORD: ${{ secrets.DOCKERHUB_LOGIN_PASSWORD }}
       run :
         docker login -u $DOCKER_USER -p $DOCKER_PASSWORD  
-
+    - name : Install dependencies 
+      run : apt-get update && apt-get install python3-pip -y && pip3 install pytest==7.3.1 && pip3 install requests==2.31.0
     - name : echo dockerhub rep
       run : echo ${{ secrets.DOCKERHUB_AUTHORIZATION_IMAGE}}
     - name : list current dir
