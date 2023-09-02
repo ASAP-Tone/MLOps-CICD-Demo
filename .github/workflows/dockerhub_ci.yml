@@ -26,11 +26,11 @@ jobs:
     - name : list current dir
       run : ls truiz_docker_exam/test_authentication/ 
     - name : Build Docker Authentication Image 
-      run: cd truiz_docker_exam/test_authentication/ && docker build . -t toneruiz/mlops-cicd-demo-authentication:latest && ../../
+      run: cd truiz_docker_exam/test_authentication/ && docker build . -t toneruiz/mlops-cicd-demo-authentication:latest && cd ../../
     - name : Build Docker Authorization Image 
-      run: cd truiz_docker_exam/test_authorization/ && docker build . -t toneruiz/mlops-cicd-demo-authorization:latest && ../../  
+      run: cd truiz_docker_exam/test_authorization/ && docker build . -t toneruiz/mlops-cicd-demo-authorization:latest && cd ../../  
     - name : Build Docker Content Image 
-      run: cd truiz_docker_exam/test_content/ && docker build . -t toneruiz/mlops-cicd-demo-content:latest && ../../  
+      run: cd truiz_docker_exam/test_content/ && docker build . -t toneruiz/mlops-cicd-demo-content:latest && cd ../../  
     - name : Docker push authentication
       run : docker push toneruiz/mlops-cicd-demo-authentication:latest
     - name : Docker push authorization
