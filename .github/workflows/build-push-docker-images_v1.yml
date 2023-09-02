@@ -16,14 +16,14 @@ jobs:
     - uses: actions/checkout@v3
    
     - name: Build the Authorization Docker image
-      run: cd truiz_docker_exam/test_authoriztion/ docker build .  --tag toneruiz/mlops-cicd-demo-authoriztion:latest && cd ../../
+      run: cd truiz_docker_exam/test_authoriztion/ && docker build .  --tag toneruiz/mlops-cicd-demo-authoriztion:latest && cd ../../
  
     - name: Build the Authentication Docker image
-      run: cd truiz_docker_exam/test_authentication/ docker build .  --tag toneruiz/mlops-cicd-demo-authentication:latest && cd ../../
+      run: cd truiz_docker_exam/test_authentication/ && docker build .  --tag toneruiz/mlops-cicd-demo-authentication:latest && cd ../../
 
  
     - name: Build the Content Docker image
-      run: cd truiz_docker_exam/test_content/ docker build .  --tag toneruiz/mlops-cicd-demo-content:latest && cd ../../
+      run: cd truiz_docker_exam/test_content/ && docker build .  --tag toneruiz/mlops-cicd-demo-content:latest && cd ../../
       
     - name: Build and Push Authorization Docker Image
       uses: mr-smithers-excellent/docker-build-push@v4
