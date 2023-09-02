@@ -28,8 +28,8 @@ jobs:
     - name : Build Docker Authentication Image 
       run: cd truiz_docker_exam/test_authentication/ && docker build . -t toneruiz/mlops-cicd-demo-authentication:latest
 
-    # - name : Docker push 
-    #   run : docker push {{ secrets.DOCKERHUB_AUTHORIZATION_IMAGE}}
+    - name : Docker push 
+      run : docker push toneruiz/mlops-cicd-demo-authentication:latest
 
    
     # - name: Build the Authorization Docker image
