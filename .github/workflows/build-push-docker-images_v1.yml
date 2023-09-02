@@ -1,50 +1,50 @@
-name: Docker Image CI
+# name: Docker Image CI
 
-on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+# on:
+#   push:
+#     branches: [ "main" ]
+#   pull_request:
+#     branches: [ "main" ]
 
-jobs:
+# jobs:
 
-  build:
+#   build:
 
-    runs-on: ubuntu-20.04
+#     runs-on: ubuntu-20.04
 
-    steps:
-    - uses: actions/checkout@v3
+#     steps:
+#     - uses: actions/checkout@v3
    
-    - name: Build the Authorization Docker image
-      run: cd truiz_docker_exam/test_authoriztion/ && docker build .  --tag toneruiz/mlops-cicd-demo-authoriztion:latest && cd ../../
+#     - name: Build the Authorization Docker image
+#       run: cd truiz_docker_exam/test_authoriztion/ && docker build .  --tag toneruiz/mlops-cicd-demo-authoriztion:latest && cd ../../
  
-    - name: Build the Authentication Docker image
-      run: cd truiz_docker_exam/test_authentication/ && docker build .  --tag toneruiz/mlops-cicd-demo-authentication:latest && cd ../../
+#     - name: Build the Authentication Docker image
+#       run: cd truiz_docker_exam/test_authentication/ && docker build .  --tag toneruiz/mlops-cicd-demo-authentication:latest && cd ../../
 
  
-    - name: Build the Content Docker image
-      run: cd truiz_docker_exam/test_content/ && docker build .  --tag toneruiz/mlops-cicd-demo-content:latest && cd ../../
+#     - name: Build the Content Docker image
+#       run: cd truiz_docker_exam/test_content/ && docker build .  --tag toneruiz/mlops-cicd-demo-content:latest && cd ../../
       
-    - name: Build and Push Authorization Docker Image
-      uses: mr-smithers-excellent/docker-build-push@v4
-      with:
-        image:  ${{ secrets.DOCKERHUB_AUTHORIZATION_IMAGE}} # nanajanashia/demo-app
-        registry: docker.io
-        username: toneruiz
-        password: ${{ secrets.DOCKER_LOGIN_PASSWORD }}
+#     - name: Build and Push Authorization Docker Image
+#       uses: mr-smithers-excellent/docker-build-push@v4
+#       with:
+#         image:  ${{ secrets.DOCKERHUB_AUTHORIZATION_IMAGE}} # nanajanashia/demo-app
+#         registry: docker.io
+#         username: toneruiz
+#         password: ${{ secrets.DOCKER_LOGIN_PASSWORD }}
       
-    - name: Build and Push Content Docker Image
-      uses: mr-smithers-excellent/docker-build-push@v4
-      with:
-        image:  ${{ secrets.DOCKERHUB_CONTENT_IMAGE}} # nanajanashia/demo-app
-        registry: docker.io
-        username: toneruiz
-        password: ${{ secrets.DOCKER_LOGIN_PASSWORD }}
+#     - name: Build and Push Content Docker Image
+#       uses: mr-smithers-excellent/docker-build-push@v4
+#       with:
+#         image:  ${{ secrets.DOCKERHUB_CONTENT_IMAGE}} # nanajanashia/demo-app
+#         registry: docker.io
+#         username: toneruiz
+#         password: ${{ secrets.DOCKER_LOGIN_PASSWORD }}
     
-    - name: Build and Push Authentication Docker Image
-      uses: mr-smithers-excellent/docker-build-push@v4
-      with:
-        image:  ${{ secrets.DOCKERHUB_AUTHENTICATION_IMAGE}} # nanajanashia/demo-app
-        registry: docker.io
-        username: toneruiz
-        password: ${{ secrets.DOCKER_LOGIN_PASSWORD }}
+#     - name: Build and Push Authentication Docker Image
+#       uses: mr-smithers-excellent/docker-build-push@v4
+#       with:
+#         image:  ${{ secrets.DOCKERHUB_AUTHENTICATION_IMAGE}} # nanajanashia/demo-app
+#         registry: docker.io
+#         username: toneruiz
+#         password: ${{ secrets.DOCKER_LOGIN_PASSWORD }}
