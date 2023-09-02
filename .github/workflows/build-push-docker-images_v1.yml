@@ -16,21 +16,21 @@ jobs:
     - uses: actions/checkout@v3
    
     - name: Build the Authorization Docker image
-      run: docker build truiz_docker_exam/test_authorization/ --file Dockerfile --tag truiz-authorization-image:latest
+      run: cd truiz_docker_exam/test_authoriztion/ docker build .  --tag toneruiz/mlops-cicd-demo-authoriztion:latest && cd ../../
  
     - name: Build the Authentication Docker image
-      run: docker build truiz_docker_exam/test_authentication/ --file Dockerfile --tag truiz-authentication-image:latest
+      run: cd truiz_docker_exam/test_authentication/ docker build .  --tag toneruiz/mlops-cicd-demo-authentication:latest && cd ../../
 
  
     - name: Build the Content Docker image
-      run: docker build truiz_docker_exam/test_content/ --file Dockerfile --tag truiz-content-image:latest
+      run: cd truiz_docker_exam/test_content/ docker build .  --tag toneruiz/mlops-cicd-demo-content:latest && cd ../../
       
     - name: Build and Push Authorization Docker Image
       uses: mr-smithers-excellent/docker-build-push@v4
       with:
         image:  ${{ secrets.DOCKERHUB_AUTHORIZATION_IMAGE}} # nanajanashia/demo-app
         registry: docker.io
-        username: ${{ secrets.DOCKERHUB_LOGIN_USERNAME }}
+        username: toneruiz
         password: ${{ secrets.DOCKER_LOGIN_PASSWORD }}
       
     - name: Build and Push Content Docker Image
@@ -38,7 +38,7 @@ jobs:
       with:
         image:  ${{ secrets.DOCKERHUB_CONTENT_IMAGE}} # nanajanashia/demo-app
         registry: docker.io
-        username: ${{ secrets.DOCKERHUB_LOGIN_USERNAME }}
+        username: toneruiz
         password: ${{ secrets.DOCKER_LOGIN_PASSWORD }}
     
     - name: Build and Push Authentication Docker Image
@@ -46,5 +46,5 @@ jobs:
       with:
         image:  ${{ secrets.DOCKERHUB_AUTHENTICATION_IMAGE}} # nanajanashia/demo-app
         registry: docker.io
-        username: ${{ secrets.DOCKERHUB_LOGIN_USERNAME }}
+        username: toneruiz
         password: ${{ secrets.DOCKER_LOGIN_PASSWORD }}
